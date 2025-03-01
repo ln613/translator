@@ -1,4 +1,8 @@
 import { useState, useRef, useCallback } from 'react';
+let franc;
+import('franc').then(module => {
+  franc = module.default;
+});
 
 /**
  * Utility functions and hooks for speech recognition
@@ -24,12 +28,26 @@ const createSpeechRecognition = (onResult, onEnd) => {
   // Configure recognition
   recognition.continuous = false;
   recognition.interimResults = false;
-  recognition.lang = 'auto'; // Auto-detect language
 
   // Set up event handlers
   recognition.onresult = (event) => {
     const last = event.results.length - 1;
     const speech = event.results[last][0].transcript;
+    
+    // Detect language
+    let lang = 'en-US'; // Default to English
+    if (franc) {
+      try {
+        const detectedLanguage = franc(speech, { only: ['eng', 'cmn'] });
+        if (detectedLanguage === 'cmn') {
+          lang = 'zh-CN';
+        }
+      } catch (error) {
+        console.error("Language detection error:", error);
+      }
+    }
+    recognition.lang = lang;
+
     onResult(speech);
   };
 
