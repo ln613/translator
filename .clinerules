@@ -1,0 +1,22 @@
+{
+  "rules": [
+    {
+      "name": "use-mobx-for-state",
+      "description": "Never put any state inside a React component using useState. All states, derived states, and related actions should be in MobX stores.",
+      "severity": "error",
+      "category": "state-management"
+    },
+    {
+      "name": "api-calls-in-store-actions",
+      "description": "API calls should be made in store actions, not directly in React components.",
+      "severity": "error",
+      "category": "state-management"
+    },
+    {
+      "name": "run-commands-one-at-a-time",
+      "description": "Commands should be run one at a time to avoid conflicts and ensure proper execution.",
+      "severity": "warning",
+      "category": "general"
+    }
+  ]
+}
