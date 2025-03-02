@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "franc": "^6.2.0",
     "mobx": "^6.13.6",
     "mobx-react": "^9.2.0",
     "react": "^19.0.0",
