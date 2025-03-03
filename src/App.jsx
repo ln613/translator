@@ -5,14 +5,16 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ChatPage from './ChatPage';
+import RealtimeChatPage from './RealtimeChatPage';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 function App() {
 
   return (
     <BrowserRouter>
-      <div>
+      <div className="nav-links">
         <Link to="/chat">Chat with ChatGPT</Link>
+        <Link to="/realtime-chat">Realtime Chat</Link>
       </div>
       <Routes>
         <Route path="/" element={
@@ -40,6 +42,7 @@ function App() {
           </>
         } />
         <Route path="/chat" element={<ChatPage />} />
+        <Route path="/realtime-chat" element={<RealtimeChatPage />} />
       </Routes>
     </BrowserRouter>
   )

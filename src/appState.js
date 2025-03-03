@@ -3,9 +3,14 @@ import { makeAutoObservable } from 'mobx';
 class AppState {
   message = '';
   chatHistory = [];
+  count = 0;
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  increment() {
+    this.count++;
   }
 
   setMessage(message) {
